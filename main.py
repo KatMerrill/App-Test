@@ -1,15 +1,14 @@
-import kivy
-kivy.require('2.1.0') # current version of Kivy
-
 from kivy.app import App
-from kivy.uix.label import Label
+from kivy.uix.widget import Widget
 
 
-class MyApp(App):
+class HomePage(Widget):
+    pass
 
+class MMApp(App):
     def build(self):
-        return Label(text='Hello world')
-
+        return HomePage()
 
 if __name__ == '__main__':
-    MyApp().run()
+    MMApp().run()
+
