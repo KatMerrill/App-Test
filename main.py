@@ -81,7 +81,9 @@ class MMApp(App):
             size_hint = (1, 0.8),
             pos_hint = {'x' : 0, 'y' : 0}
         )
-        scrolling_layout = FloatLayout()
+        scrolling_layout = FloatLayout(
+            size_hint = (1, 1.5)
+        )
         scrollview.add_widget(scrolling_layout)
 
 
@@ -90,7 +92,7 @@ class MMApp(App):
             placeholder_streams.append(
                 Button(
                     size_hint = (0.25, 0.2),
-                    pos_hint = {'x' : 0.05 + ((3 * x) % 10)/10, 'y' : 0.1 + ((3 * x) // 10)/10}
+                    pos_hint = {'x' : 0.05 + ((3 * x) % 9)/10, 'y' : 0.1 + ((3 * x) // 9)/10 * 2.5}
                 ))
             scrolling_layout.add_widget(placeholder_streams[x])
 
