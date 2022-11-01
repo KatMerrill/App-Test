@@ -7,6 +7,7 @@ from kivy.uix.label import Label
 from kivy.uix.dropdown import DropDown
 from kivy.uix.button import Button
 from kivy.uix.scrollview import ScrollView
+from kivy.core.window import Window
 
 # from kivy.core.video import Video
 
@@ -17,6 +18,9 @@ class MMApp(App):
             size_hint = (1, 1),
             pos_hint = {'x' : 0, 'y' : 0}
         )
+
+        # sets background to white
+        Window.clearcolor = (1, 1, 1, 1)
 
         # menu bar contains the website title (button redirecting to main page), search bar, and 3 buttons
         menubar = FloatLayout(
@@ -30,7 +34,8 @@ class MMApp(App):
 
         # page title
         page_title = Label(
-            text='Multicast Menu Mobile',
+            text = 'Multicast Menu Mobile',
+            color = (0, 0, 0, 1),
             size_hint = (0.2, 0.2),
             pos_hint = {'x' : 0.05, 'y' : 0.4}
             )
@@ -45,19 +50,23 @@ class MMApp(App):
         menubar.add_widget(searchbar)
 
         # View Streams dropdown menu: All Streams, Trending Streams, Editor's Choice Streams
-        dropdown = DropDown()
+        dropdown = DropDown(
+            size_hint = (0.2, 0.4),
+            pos_hint = {'x' : 0.5, 'y' : 0.1}
+        )
         
         # XXX TODO: dropdown currently doesn't work :)
-
-        dropdown_choices = [Button(text='Select Stream'), Button(text='All Streams'), Button(text='Trending Streams'), Button(text='Editor\'s Choice Streams')]
-        for btn in dropdown_choices[1:]:
-
-            # XXX what does lambda do here
-            btn.bind(on_release=lambda btn: dropdown.select(btn.text))
-        dropdown_choices[0].bind(on_release=dropdown.open)
-
-
-        menubar.add_widget(dropdown)
+        # dropdown_choices = [
+        #     Button(text='Select Stream', size_hint = (None, None)), 
+        #     Button(text='All Streams', size_hint_y=None, height=44), 
+        #     Button(text='Trending Streams', size_hint_y=None, height=44), 
+        #     Button(text='Editor\'s Choice Streams', size_hint_y=None, height=44)]
+        # for btn in dropdown_choices[1:]:
+        #     btn.bind(on_release=lambda btn: dropdown.select(btn.text))
+        #     dropdown.add_widget(btn)
+        # dropdown_choices[0].bind(on_release=dropdown.open)
+        # dropdown.bind(on_select=lambda instance, x: setattr(dropdown_choices[0], 'text', x))
+        # menubar.add_widget(dropdown)
 
         # Login button
         login_button = Button(
@@ -84,58 +93,30 @@ class MMApp(App):
         scrolling_layout = FloatLayout(
             size_hint = (1, 1.5)
         )
-        scrollview.add_widget(scrolling_layout)
-
 
         placeholder_streams = []
         for x in range(9):
             placeholder_streams.append(
                 Button(
                     size_hint = (0.25, 0.2),
-                    pos_hint = {'x' : 0.05 + ((3 * x) % 9)/10, 'y' : 0.1 + ((3 * x) // 9)/10 * 2.5}
+                    pos_hint = {'x' : 0.05 + ((3 * x) % 9)/10, 'y' : 0.1 + ((3 * x) // 9)/10 * 3},
+                    background_normal = '',
+                    background_color = (0, 0.533, 0.412, 1)
                 ))
             scrolling_layout.add_widget(placeholder_streams[x])
 
+        instructions = Label(
+            text = 'Available streams are listed below:',
+            size_hint = (0.6, 0.2),
+            pos_hint = {'x' : 0.2, 'y' : 0.85},
+            color = (0, 0, 0, 1)
+        )
+        scrolling_layout.add_widget(instructions)
+
+        scrollview.add_widget(scrolling_layout)
         main_layout.add_widget(scrollview)
 
         return main_layout
-
-
-# extends the Widget class to have a custom canvas
-class DrawingWidget(Widget):
-    def __init__(self):
-        super(DrawingWidget, self).__init__()
-
-        self.size_hint = (1, 1)
-
-        # for whatever reason, this is allowing me to put the rectangle outside of where the drawing class actually is.
-        with self.canvas:
-
-            # Color(1, 1, 1, 1)
-            # self.rect = Rectangle(
-            # )
-            Color(0, 0.533, 0.412, 1)
-            self.rect = Rectangle(pos = (self.width / 2., self.height / 2.),
-                                  size =(self.width / 2.,
-                                        self.height / 2.))
-        
-        self.bind(pos = self.update_rect,
-                  size = self.update_rect)
-
-    # update function which makes the canvas adjustable. FROM GEEKS FOR GEEKS - rework this and the self.rect part above
-    def update_rect(self, *args):
-        self.rect.pos = self.pos
-        self.rect.size = self.size
-    
-    def update_rectangle(self, instance, value):
-        self.rect.pos = self.pos
-        self.rect.size = self.size
-
-        # player = Video(filename='sample.mp4')
-        # player.autoplay = True
-        # player.state = 'play'
-        # player.options = {'allow_stretch': True}
-                
 
 
 if __name__ == '__main__':
