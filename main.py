@@ -1,6 +1,4 @@
 from kivy.app import App
-from kivy.uix.widget import Widget
-from kivy.graphics import Rectangle, Color
 from kivy.uix.textinput import TextInput
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.label import Label
@@ -9,7 +7,7 @@ from kivy.uix.button import Button
 from kivy.uix.scrollview import ScrollView
 from kivy.core.window import Window
 
-# from kivy.core.video import Video
+from kivy.core.video import Video
 
 
 class MMApp(App):
@@ -27,10 +25,6 @@ class MMApp(App):
             size_hint = (1, 0.2),
             pos_hint = ({'x': 0, 'y': 0.8}),
         )
-
-        # there are currently errors with this background -- it's showing at the bottom of the screen instead of the top
-        # background = DrawingWidget()
-        # menubar.add_widget(background)
 
         # page title
         page_title = Label(
@@ -94,6 +88,14 @@ class MMApp(App):
             size_hint = (1, 1.5)
         )
 
+        # XXX what are we doing :)
+        # video = Video(
+        #     source='sample.mp4',
+        #     size_hint = (0.5, 0.5),
+        #     pos = (0, 0)
+        # )
+        # scrolling_layout.add_widget(video)
+
         placeholder_streams = []
         for x in range(9):
             placeholder_streams.append(
@@ -121,4 +123,3 @@ class MMApp(App):
 
 if __name__ == '__main__':
     MMApp().run()
-
