@@ -1,13 +1,12 @@
 from kivy.app import App
-from kivy.uix.video import Video
+from kivy.uix.videoplayer import VideoPlayer
 
 class VideoWindow(App):
     def build(self):
-        video = Video(source = 'sample.mp4')
+        video = VideoPlayer(source = 'sample.mp4')
         video.state = "play"
         video.options = {'eos': 'loop'}
-
-        video.allow_stretch = True
+        video.options = {'allow_stretch' : 'True'}
 
         return video
 
