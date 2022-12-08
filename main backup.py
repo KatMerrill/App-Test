@@ -37,14 +37,13 @@ class MMApp(App):
             )
         menubar.add_widget(page_title)
 
-        # TODO: search bar should appear when search icon is clicked
         # search bar
-        # searchbar = TextInput(
-        #     text = 'Search',
-        #     size_hint = (0.3, 0.25),
-        #     pos_hint = {'x' : 0.3, 'y' : 0.4}
-        #     )
-        # menubar.add_widget(searchbar)
+        searchbar = TextInput(
+            text = 'Search',
+            size_hint = (0.3, 0.25),
+            pos_hint = {'x' : 0.3, 'y' : 0.4}
+            )
+        menubar.add_widget(searchbar)
 
         # View Streams dropdown menu: All Streams, Trending Streams, Editor's Choice Streams
         dropdown = DropDown(
@@ -52,7 +51,7 @@ class MMApp(App):
             pos_hint = {'x' : 0.5, 'y' : 0.1}
         )
         
-        # TODO: dropdown currently doesn't work :)
+        # XXX TODO: dropdown currently doesn't work :)
         # dropdown_choices = [
         #     Button(text='Select Stream', size_hint = (None, None)), 
         #     Button(text='All Streams', size_hint_y=None, height=44), 
@@ -65,34 +64,23 @@ class MMApp(App):
         # dropdown.bind(on_select=lambda instance, x: setattr(dropdown_choices[0], 'text', x))
         # menubar.add_widget(dropdown)
 
-        # Search button
-        search_button = Button(
-            # background_normal = '',
-            background_normal = 'search.PNG',
-            size_hint = (0.2,0.5),
-            pos_hint = {'x' : 0.25, 'y' : 0.2}
+        # Login button
+        login_button = Button(
+            text = 'Log in',
+            size_hint = (0.1, 0.2),
+            pos_hint = {'x' : 0.8, 'y' : 0.4}
         )
-        menubar.add_widget(search_button)
+        menubar.add_widget(login_button)
 
-        # Record button
-        record_button = Button(
-            # background_normal = '',
-            background_normal = 'record.PNG',
-            size_hint = (0.2,0.5),
-            pos_hint = {'x' : 0.5, 'y' : 0.2}
-        )
-        menubar.add_widget(record_button)
-
-        # Account button
-        account_button = Button(
-            background_normal = 'account.PNG',
-            size_hint = (0.2,0.5),
-            pos_hint = {'x' : 0.75, 'y' : 0.2}
-        )
-        menubar.add_widget(account_button)
-        
-        
+        # Register button
+        # register_button = Button(
+        #     text = 'Register',
+        #     size_hint = (0.1, 0.2),
+        #     pos_hint = {'x' : 0.8, 'y' : 0.4}
+        # )
+        # menubar.add_widget(register_button)
         main_layout.add_widget(menubar)
+
 
         scrollview = ScrollView(
             size_hint = (1, 0.8),
