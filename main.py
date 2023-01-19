@@ -13,16 +13,15 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 class MMApp(App):
     def build(self):
         Window.size = (412, 732)
-        # sets background to white
-        Window.clearcolor = (1, 1, 1, 1)
-        sm = ScreenManager()
-        sm.add_widget(HomeScreen())
 
-class HomeScreen(Screen):
+
         main_layout = FloatLayout(
             size_hint = (1, 1),
             pos_hint = {'x' : 0, 'y' : 0}
         )
+
+        # sets background to white
+        Window.clearcolor = (1, 1, 1, 1)
 
         # menu bar contains the website title (button redirecting to main page), search bar, and 3 buttons
         menubar = FloatLayout(
@@ -104,7 +103,7 @@ class HomeScreen(Screen):
             size_hint = (1, 1.5)
         )
 
-        # TODO what are we doing :)
+        # XXX what are we doing :)
         # video = Video(
         #     source='sample.mp4',
         #     size_hint = (0.5, 0.5),
@@ -139,7 +138,7 @@ class HomeScreen(Screen):
         scrollview.add_widget(scrolling_layout)
         main_layout.add_widget(scrollview)
 
-        # return main_layout
+        return main_layout
 
 
 if __name__ == '__main__':
