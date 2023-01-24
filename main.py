@@ -12,7 +12,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 
 class MMApp(App):
     def build(self):
-        Window.size = (412, 732)
+        Window.maximize()
 
 
         main_layout = FloatLayout(
