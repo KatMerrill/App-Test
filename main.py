@@ -30,13 +30,13 @@ class MMApp(App):
         )
 
         # page title
-        page_title = Label(
-            text = 'MM',
-            color = (0, 0, 0, 1),
-            size_hint = (0.2, 0.2),
-            pos_hint = {'x' : 0.05, 'y' : 0.4}
-            )
-        menubar.add_widget(page_title)
+        # page_title = Label(
+        #     text = 'MM',
+        #     color = (0, 0, 0, 1),
+        #     size_hint = (0.2, 0.2),
+        #     pos_hint = {'x' : 0.05, 'y' : 0.4}
+        #     )
+        # menubar.add_widget(page_title)
 
         # TODO: search bar should appear when search icon is clicked
         # search bar
@@ -69,26 +69,26 @@ class MMApp(App):
         # Search button
         search_button = Button(
             # background_normal = '',
-            background_normal = 'search.PNG',
+            background_normal = 'images/search.PNG',
             size_hint = (0.2,0.5),
-            pos_hint = {'x' : 0.25, 'y' : 0.2}
+            pos_hint = {'x' : 0.1, 'y' : 0.2}
         )
         menubar.add_widget(search_button)
 
         # Record button
         record_button = Button(
             # background_normal = '',
-            background_normal = 'record.PNG',
+            background_normal = 'images/record.PNG',
             size_hint = (0.2,0.5),
-            pos_hint = {'x' : 0.5, 'y' : 0.2}
+            pos_hint = {'x' : 0.4, 'y' : 0.2}
         )
         menubar.add_widget(record_button)
 
         # Account button
         account_button = Button(
-            background_normal = 'account.PNG',
+            background_normal = 'images/account.PNG',
             size_hint = (0.2,0.5),
-            pos_hint = {'x' : 0.75, 'y' : 0.2}
+            pos_hint = {'x' : 0.7, 'y' : 0.2}
         )
         menubar.add_widget(account_button)
         
