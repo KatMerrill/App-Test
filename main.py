@@ -68,7 +68,6 @@ class MMApp(App):
 
         # Search button
         search_button = Button(
-            # background_normal = '',
             background_normal = 'images/search.PNG',
             size_hint = (0.2,0.5),
             pos_hint = {'x' : 0.1, 'y' : 0.2}
@@ -77,7 +76,6 @@ class MMApp(App):
 
         # Record button
         record_button = Button(
-            # background_normal = '',
             background_normal = 'images/record.PNG',
             size_hint = (0.2,0.5),
             pos_hint = {'x' : 0.4, 'y' : 0.2}
