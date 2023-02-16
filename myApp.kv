@@ -9,16 +9,9 @@ WindowManager:
 
     FloatLayout:
         name: 'menu_bar'
-        size_hint: (1,0.2)
+        size_hint: (1,0.1)
         pos_hint: {'x' : 0, 'top' : 1}
 
-        canvas.before: # how to make full background white ;-;
-            Color:
-                rgba: 1,1,1,1
-            Rectangle:
-                pos: self.pos
-                size: self.size
-        
         Button:
             name: 'search_button'
             background_normal: 'images/search.PNG'
