@@ -12,8 +12,8 @@ class WindowManager(ScreenManager):
 class WatchScreen(Screen):
     pass
 
-# class HomeScreen(Screen):
-#     pass
+class HomeScreen(Screen):
+    pass
 
 Window.clearcolor = (255, 255, 255, 255)
 # used to load a file other than the default, which is my.kv
