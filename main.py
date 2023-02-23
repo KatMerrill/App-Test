@@ -112,11 +112,6 @@ class MMApp(App):
         placeholder_streams = []
         for num in range((count_streams := 3)):
             placeholder_streams.append(
-
-                # size_hint = (0.25, 0.2),
-                #     pos_hint = {'x' : 0.05 + ((3 * x) % 9)/10, 'y' : 0.1 + ((3 * x) // 9)/10 * 3},
-                    
-
                 Button(
                     size_hint = (0.75, 0.2),
                     pos_hint = {'x' : 0.05, 'y' : 0.1 + ((3 * num) // count_streams)/10 * 2.5},

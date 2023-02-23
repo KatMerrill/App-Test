@@ -1,10 +1,11 @@
 #:kivy 2.1.0
 
+# all window classes 
 WindowManager:
-    MainWindow:
-    VideoWindow:
+    HomeScreen:
+    WatchScreen:
 
-<MainWindow>:
+<HomeScreen>:
     name: 'main'
 
     FloatLayout:
@@ -28,16 +29,18 @@ WindowManager:
             size_hint: (0.2, 1)
             pos_hint: {'x' : 0.7, 'top' : 0.2}
 
-    ScrollView:
-        size_hint: (1, 0.8)
-        pos_hint: {'x' : 0, 'y' : 0}
+    # ScrollView:
+    #     name: 'scrolling_view'
+    #     size_hint: (1, 0.8)
+    #     pos_hint: {'x' : 0, 'y' : 0}
 
         # the scrolling layout must be referred to in main.py
         # in order to add all online video streams
-        FloatLayout:
-            name: 'scrolling_layout'
+    FloatLayout:
+        id: scrolling_layout
+        size_hint: (1, 1.5)
             
 
 
-<VideoWindow>:
+<WatchScreen>:
     name: 'video_viewer'
