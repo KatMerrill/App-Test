@@ -11,26 +11,26 @@ Window.maximize()
 # used to load a file other than the default, which is my.kv
 kv = Builder.load_file("myApp.kv")
 
-placeholder_streams = []
+# defines a custom button class used for the buttons that link to streams
+class StreamButton(Button):
+    pass
 
-STREAM_COUNT = 3
+stream_urls = ['temp1', 'temp2', 'temp3']
+stream_buttons = []
 
 # all classes referred to in the .kv files don't need any code here. Note that this inherits from Screen
 class HomeScreen(Screen):
-    
     @mainthread
     def on_enter(self):
-        for num in range(STREAM_COUNT):
+        for num in range(stream_count:=len(stream_urls)):
             # note that these are placeholders, but real streams will be stored in some sort of list similar to this
-            placeholder_streams.append(
-                Button(
-                    size_hint = (0.75, 0.2),
-                    pos_hint = {'x' : 0.05, 'y' : 0.1 + ((3 * num) // STREAM_COUNT)/10 * 2.5},
-                    background_normal = '',
-                    background_color = (0, 0.533, 0.412, 1)
+            stream_buttons.append(
+                StreamButton(
+                    # all other aspects of the button are defined 
+                    pos_hint = {'x' : 0.05, 'y' : 0.1 + ((3 * num) // stream_count)/10 * 2.5}
                 )
             )
-            self.ids.scrolling_layout.add_widget(placeholder_streams[num])
+            self.ids.scrolling_layout.add_widget(stream_buttons[num])
 
 class WatchScreen(Screen):
     pass
