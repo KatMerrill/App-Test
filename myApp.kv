@@ -1,12 +1,7 @@
 #:kivy 2.1.0
 
-# all window classes 
-WindowManager:
-    HomeScreen:
-    WatchScreen:
-
 <HomeScreen>:
-    name: 'main'
+    name: 'main_screen'
 
     FloatLayout:
         name: 'menu_bar'
@@ -18,6 +13,8 @@ WindowManager:
             background_normal: 'images/search.PNG'
             size_hint: (0.2, 1)
             pos_hint: {'x' : 0.1, 'top' : 0.2}
+            on_press:
+                root.manager.current = 'video_viewer'
         Button:
             name: 'record_button'
             background_normal: 'images/record.PNG'

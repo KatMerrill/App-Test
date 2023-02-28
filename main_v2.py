@@ -6,17 +6,12 @@ from kivy.uix.button import Button
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import mainthread
 
-
-# ScreenManager keeps track of all Screens
-class WindowManager(ScreenManager):
-    pass
-
-placeholder_streams = []
-
 Window.clearcolor = (255, 255, 255, 255)
 Window.maximize()
 # used to load a file other than the default, which is my.kv
 kv = Builder.load_file("myApp.kv")
+
+placeholder_streams = []
 
 STREAM_COUNT = 3
 
@@ -42,9 +37,12 @@ class WatchScreen(Screen):
 
 # the app only has to build itself, since everything else is contained in the .kv files
 class MyMainApp(App):
-    pass
-    # def build(self):
-    #     return kv
+    def build(self):
+        sm = ScreenManager()
+        sm.add_widget(HomeScreen())
+        sm.add_widget(WatchScreen())  
+        sm.current = 'main_screen'
+        return sm
 
 if __name__ == "__main__":
     MyMainApp().run()
