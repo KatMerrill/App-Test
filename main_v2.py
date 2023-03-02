@@ -5,6 +5,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.scrollview import ScrollView
 from kivy.clock import mainthread
+from kivy.uix.label import Label
 
 Window.clearcolor = (255, 255, 255, 255)
 Window.maximize()
@@ -35,12 +36,16 @@ class HomeScreen(Screen):
 class WatchScreen(Screen):
     pass
 
+class AccountScreen(Screen):
+    pass
+
 # the app only has to build itself, since everything else is contained in the .kv files
 class MyMainApp(App):
     def build(self):
         sm = ScreenManager()
         sm.add_widget(HomeScreen())
-        sm.add_widget(WatchScreen())  
+        sm.add_widget(WatchScreen())
+        sm.add_widget(AccountScreen())  
         sm.current = 'main_screen'
         return sm
 
