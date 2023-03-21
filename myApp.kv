@@ -1,30 +1,43 @@
 #:kivy 2.1.0
 
+<MyManager>:
+    id: screenManager_id
+    HomeScreen:
+        MenuBar:
+    WatchScreen:
+        MenuBar:
+    AccountScreen:
+        MenuBar:
+
+<MenuBar>:
+    name: 'menu_bar'
+    size_hint: (1,0.1)
+    pos_hint: {'x' : 0, 'top' : 1}
+    
+    Button:
+        # name: 'search_button'
+        background_normal: 'images/search.PNG'
+        size_hint: (0.2, 1)
+        pos_hint: {'x' : 0.1, 'top' : 0.2}
+    Button:
+        # name: 'record_button'
+        background_normal: 'images/record.PNG'
+        size_hint: (0.2, 1)
+        pos_hint: {'x' : 0.4, 'top' : 0.2}
+    Button:
+        # name: 'account_button'
+        background_normal: 'images/account.PNG'
+        size_hint: (0.2, 1)
+        pos_hint: {'x' : 0.7, 'top' : 0.2}
+        on_press:
+            print("hello")
+            print(app.root.ids)
+            # app.root.ids.screenManager_id.current = 'account_screen'
+        #     root.manager.current = 'account_screen'
+
 <HomeScreen>:
     name: 'main_screen'
-
-    FloatLayout:
-        name: 'menu_bar'
-        size_hint: (1,0.1)
-        pos_hint: {'x' : 0, 'top' : 1}
-
-        Button:
-            name: 'search_button'
-            background_normal: 'images/search.PNG'
-            size_hint: (0.2, 1)
-            pos_hint: {'x' : 0.1, 'top' : 0.2}
-        Button:
-            name: 'record_button'
-            background_normal: 'images/record.PNG'
-            size_hint: (0.2, 1)
-            pos_hint: {'x' : 0.4, 'top' : 0.2}
-        Button:
-            name: 'account_button'
-            background_normal: 'images/account.PNG'
-            size_hint: (0.2, 1)
-            pos_hint: {'x' : 0.7, 'top' : 0.2}
-            on_press:
-                root.manager.current = 'account_screen'
+    # MenuBar:
 
     ScrollView:
         name: 'scrolling_view'
@@ -42,14 +55,18 @@
     size_hint: (0.2, 0.2)
     background_normal: ''
     background_color: (0, 0.533, 0.412, 1)
+
+    # MenuBar:
     # on_press:
     #     root.manager.current: 'video_viewer'
 
 <WatchScreen>:
     name: 'video_viewer'
+    # MenuBar:
 
 <AccountScreen>:
     name: 'account_screen'
+    # MenuBar:
     Label:
         text: 'Hello, user!'
         color: 'black'

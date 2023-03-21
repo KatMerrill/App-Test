@@ -1,0 +1,26 @@
+#:kivy 2.1.0
+#:import Factory kivy.factory.Factory
+
+<MyCustomWidgets>:
+    
+    ListView:
+        id: my_listview
+    
+    
+<MainScreen>:
+    
+    Button:
+        text: "Choose File"
+        on_release: Factory.FileChooserDialog().open()
+    
+    MyCustomWidgets:
+            
+    
+<FileChooserDialog@ModalView>:
+    
+    FileChooserIconView:
+        id: filechooser
+
+    Button:
+        text: "OK"
+        on_release: app.root.add_to_listview("Sample Text", app.root.ids.my_listview)
