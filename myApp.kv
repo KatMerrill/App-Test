@@ -1,11 +1,7 @@
 #:kivy 2.1.0
 
-WindowManager:
-    MainWindow:
-    VideoWindow:
-
-<MainWindow>:
-    name: 'main'
+<HomeScreen>:
+    name: 'main_screen'
 
     FloatLayout:
         name: 'menu_bar'
@@ -27,17 +23,33 @@ WindowManager:
             background_normal: 'images/account.PNG'
             size_hint: (0.2, 1)
             pos_hint: {'x' : 0.7, 'top' : 0.2}
+            on_press:
+                root.manager.current = 'account_screen'
 
     ScrollView:
+        name: 'scrolling_view'
         size_hint: (1, 0.8)
         pos_hint: {'x' : 0, 'y' : 0}
 
         # the scrolling layout must be referred to in main.py
         # in order to add all online video streams
-        FloatLayout:
-            name: 'scrolling_layout'
-            
+    FloatLayout:
+        id: scrolling_layout
+        size_hint: (1, 1.5)
 
+<StreamButton>:
+    # size_hint: (0.75, 0.2)
+    size_hint: (0.2, 0.2)
+    background_normal: ''
+    background_color: (0, 0.533, 0.412, 1)
+    # on_press:
+    #     root.manager.current: 'video_viewer'
 
-<VideoWindow>:
+<WatchScreen>:
     name: 'video_viewer'
+
+<AccountScreen>:
+    name: 'account_screen'
+    Label:
+        text: 'Hello, user!'
+        color: 'black'
