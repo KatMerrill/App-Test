@@ -49,8 +49,11 @@ class AccountScreen(Screen):
 class MyManager(ScreenManager):
     pass
 
-# the app only has to build itself, since everything else is contained in the .kv files
 class MyMainApp(App):
+    # def callback(x, button_name):
+        # manager.current = button_name
+        # pass
+    
     def build(self):
         sm = MyManager()
         # sm.add_widget(HomeScreen())
