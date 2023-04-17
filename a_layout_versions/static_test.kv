@@ -1,0 +1,43 @@
+#:kivy 2.1.0
+
+<HomeScreen>:
+    name: 'main_screen'
+
+    FloatLayout:
+        name: 'menu_bar'
+        size_hint: (1,0.1)
+        pos_hint: {'x' : 0, 'top' : 1}
+
+        Button:
+            name: 'search_button'
+            background_normal: 'images/search.PNG'
+            size_hint: (0.2, 1)
+            pos_hint: {'x' : 0.1, 'top' : 0.2}
+            on_press:
+                root.manager.current = 'video_viewer'
+        Button:
+            name: 'record_button'
+            background_normal: 'images/record.PNG'
+            size_hint: (0.2, 1)
+            pos_hint: {'x' : 0.4, 'top' : 0.2}
+        Button:
+            name: 'account_button'
+            background_normal: 'images/account.PNG'
+            size_hint: (0.2, 1)
+            pos_hint: {'x' : 0.7, 'top' : 0.2}
+
+    # ScrollView:
+    #     name: 'scrolling_view'
+    #     size_hint: (1, 0.8)
+    #     pos_hint: {'x' : 0, 'y' : 0}
+
+        # the scrolling layout must be referred to in main.py
+        # in order to add all online video streams
+    FloatLayout:
+        id: scrolling_layout
+        size_hint: (1, 1.5)
+            
+
+
+<WatchScreen>:
+    name: 'video_viewer'

@@ -1,0 +1,74 @@
+#:kivy 2.1.0
+
+<MyManager>:
+    Screen:
+        MDBoxLayout:
+            orientation: "vertical"
+
+            MDTopAppBar:
+                title: "Multicast Mobile"
+                left_action_items:
+                    [
+                    ["home", lambda x: root.manager.switch_page("screen1"), "Home"]
+                    ]
+                right_action_items:
+                    [
+                    ["magnify", lambda x: root.manager.switch_page("screen2"), "Search"],
+                    ["camera", lambda x: app.callback("Record"), "Record"],
+                    ["account", lambda x: app.callback("Account"), "Account"]
+                    ]
+
+                manager: screen_manager
+                # missing smth here: manager
+
+            MDLabel:
+                text: "Content"
+                halign: "center"
+
+        MDNavigationLayout:
+            ScreenNav:
+                id: screen_manager
+                Screen:
+                    name: 'main_screen'
+                    # MenuBar:
+
+                    ScrollView:
+                        name: 'scrolling_view'
+                        size_hint: (1, 0.8)
+                        pos_hint: {'x' : 0, 'y' : 0}
+
+                        # the scrolling layout must be referred to in main.py
+                        # in order to add all online video streams
+                    FloatLayout:
+                        id: scrolling_layout
+                        size_hint: (1, 1.5)
+
+                        text: 'hi'
+                Screen:
+                    name: 'screen2'
+                    MDLabel:
+                        text: 'screen2'
+    
+    
+
+
+<StreamButton>:
+    # size_hint: (0.75, 0.2)
+    size_hint: (0.2, 0.2)
+    background_normal: ''
+    background_color: (0, 0.533, 0.412, 1)
+
+    # MenuBar:
+    # on_press:
+    #     root.manager.current: 'video_viewer'
+
+<WatchScreen>:
+    name: 'video_viewer'
+    # MenuBar:
+
+<AccountScreen>:
+    name: 'account_screen'
+    # MenuBar:
+    Label:
+        text: 'Hello, user!'
+        color: 'black'
