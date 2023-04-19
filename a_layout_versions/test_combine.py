@@ -4,7 +4,6 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
 from kivy.uix.scrollview import ScrollView
-from kivy.clock import mainthread
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 
@@ -18,7 +17,6 @@ Window.size = (300, 500) # FOR TESTING, remove before compiling
 
 
 # used to load a file other than the default (default is my.kv)
-kv = Builder.load_file("test_combine.kv")
 
 
 # defines a custom button class used for the buttons that link to streams
@@ -43,25 +41,28 @@ class AccountScreen(Screen):
     pass
 
 class MyManager(ScreenManager):
+    def switch_page(x, page):
+        print(page)
+        current = 'screen2'
     pass
 
 class ScreenNav(ScreenManager):
-    def switch_page(x, page):
-        current = page
     pass
 
 class MyMainApp(MDApp):
     def build(self):
-        sm = MyManager()
+        self.root = Builder.load_file("test_combine.kv")
+        # sm = MyManager()
         # sm.add_widget(HomeScreen())
         # sm.add_widget(WatchScreen())
         # sm.add_widget(AccountScreen())  
         # sm.current = 'main_screen'
-        return sm
+        # return sm
+        
     
 
-    def switch_page(x, button_name):
-        sm.current = button_name
+    # def switch_page(x, button_name): 
+    #     sm.current = button_name
         # pass
     
     

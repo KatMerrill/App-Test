@@ -1,53 +1,58 @@
 #:kivy 2.1.0
 
-<MyManager>:
-    Screen:
-        MDBoxLayout:
-            orientation: "vertical"
+# <MyManager>:
+Screen:
+    MDTopAppBar:
+        id: toolbar
+        title: "Multicast Mobile"
+        screen_manager: screen_manager
+        left_action_items:
+            [
+            ["home", lambda x: screen_manager.current("screen1"), "Home"]
+            ]
+        right_action_items:
+            [
+            ["magnify", lambda x: screen_manager.current("screen2"), "Search"],
+            ["camera", lambda x: x, "Record"],
+            ["account", lambda x: x, "Account"]
+            ]
 
-            MDTopAppBar:
-                title: "Multicast Mobile"
-                left_action_items:
-                    [
-                    ["home", lambda x: root.manager.switch_page("screen1"), "Home"]
-                    ]
-                right_action_items:
-                    [
-                    ["magnify", lambda x: root.manager.switch_page("screen2"), "Search"],
-                    ["camera", lambda x: app.callback("Record"), "Record"],
-                    ["account", lambda x: app.callback("Account"), "Account"]
-                    ]
-
-                manager: screen_manager
-                # missing smth here: manager
-
-            MDLabel:
-                text: "Content"
-                halign: "center"
-
-        MDNavigationLayout:
-            ScreenNav:
-                id: screen_manager
-                Screen:
-                    name: 'main_screen'
-                    # MenuBar:
-
-                    ScrollView:
-                        name: 'scrolling_view'
-                        size_hint: (1, 0.8)
-                        pos_hint: {'x' : 0, 'y' : 0}
-
-                        # the scrolling layout must be referred to in main.py
-                        # in order to add all online video streams
-                    FloatLayout:
-                        id: scrolling_layout
-                        size_hint: (1, 1.5)
-
-                        text: 'hi'
-                Screen:
-                    name: 'screen2'
+    MDNavigationLayout:
+        x: toolbar.height
+        ScreenManager:
+            id: screen_manager
+            HomeScreen:
+                name: 'screen1'
+                MDBoxLayout:
+                    orientation: "vertical"
                     MDLabel:
-                        text: 'screen2'
+                        text: "aaa"
+                        halign: "center"
+            
+            WatchScreen:
+                name: 'screen2'
+                MDLabel:
+                    text: "Hiiii"
+
+        
+        
+    # MDNavigationLayout:
+    #     ScreenNav:
+    #         id: screen_manager
+    #         Screen:
+    #             name: 'main_screen'
+    #             # MenuBar:
+    #             ScrollView:
+    #                 name: 'scrolling_view'
+    #                 size_hint: (1, 0.8)
+    #                 pos_hint: {'x' : 0, 'y' : 0}
+    #                 # the scrolling layout must be referred to in main.py
+    #                 # in order to add all online video streams
+    #             FloatLayout:
+    #                 id: scrolling_layout
+    #                 size_hint: (1, 1.5)
+    #                 text: 'hi'
+
     
     
 

@@ -9,6 +9,10 @@ from kivy.core.window import Window
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 
+
+import webbrowser
+
+
 kv = Builder.load_file("myApp.kv")
 
 
@@ -113,6 +117,7 @@ class MMApp(App):
         # )
         # scrolling_layout.add_widget(video)
 
+
         placeholder_streams = []
         for num in range((count_streams := 3)):
             placeholder_streams.append(
@@ -120,7 +125,10 @@ class MMApp(App):
                     size_hint = (0.75, 0.2),
                     pos_hint = {'x' : 0.05, 'y' : 0.1 + ((3 * num) // count_streams)/10 * 2.5},
                     background_normal = '',
-                    background_color = (0, 0.533, 0.412, 1)
+                    background_color = (0, 0.533, 0.412, 1),
+                    on_release = {
+                        webbrowser.open('http://www.google.com')
+                    }
                 ))
             scrolling_layout.add_widget(placeholder_streams[num])
 
