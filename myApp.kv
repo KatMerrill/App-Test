@@ -1,0 +1,42 @@
+#:kivy 2.1.0
+
+MDBoxLayout:
+    orientation: "vertical"
+    MDTopAppBar:
+        title: "Multicast Mobile"
+        screen_manager: screen_manager
+        left_action_items:
+            [
+            ["home", lambda x: app.callback("Home",screen_manager), "Home"]
+            ]
+        right_action_items:
+            [
+            ["magnify", lambda x: app.callback("Search",screen_manager), "Search"],
+            ["camera", lambda x: app.callback("Record",screen_manager), "Record"],
+            ["account", lambda x: app.callback("Account",screen_manager), "Account"]
+            ]
+    
+    ScreenManager:
+        id: screen_manager
+        Screen:
+            name: "Home"               
+            MDLabel:
+                text: "home screen"
+                halign: "center"   
+
+        Screen:
+            name: "Search"                   
+            MDLabel:
+                text: " search button"
+                halign: "center" 
+        Screen:
+            name: "Record"               
+            MDLabel:
+                text: "record screen"
+                halign: "center"   
+
+        Screen:
+            name: "Account"                   
+            MDLabel:
+                text: " accoutn screen"
+                halign: "center" 

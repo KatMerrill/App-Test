@@ -1,5 +1,6 @@
 static_test.py, static_test.kv = the formatting is broken but the first button redirects to a new page
 scroll_test.py, scroll_test.kv = the scrolling view works correctly, but nothing else
 nav_test.py = uses a kivyMD navigation bar, but the buttons only register the key press, do not redirect
-
 test_combine.py, test_combine.kv = WIP file
+
+main.py = actual
