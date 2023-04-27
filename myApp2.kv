@@ -29,10 +29,24 @@ MDBoxLayout:
                 text: " search button"
                 halign: "center" 
         Screen:
-            name: "Record"               
-            MDLabel:
-                text: "record screen"
-                halign: "center"   
+            FloatLayout:
+                Label:
+                    text: "Webcam from OpenCV?"
+                    pos_hint: {"x":0.0, "y":0.8}
+                    size_hint: 1.0, 0.2
+
+                Camera:
+                    id: camera
+                    resolution: (1920, 1080)
+                    play: True
+
+                Button:
+                    id: button
+                    text: 'Start Video'
+                    pos_hint: {"x":0.0, "y":0.0}
+                    size_hint: 1.0, 0.2
+                    font_size: 50
+                    on_release: app.startstop()
 
         Screen:
             name: "Account"                   
