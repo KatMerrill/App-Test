@@ -34,10 +34,10 @@ Builder.load_string('''
             pos_hint: {"x":0.0, "y":0.8}
             size_hint: 1.0, 0.2
 
-        Camera:
-            id: camera
-            resolution: (1920, 1080)
-            play: True
+        # Camera:
+        #     id: camera
+        #     resolution: (1920, 1080)
+        #     play: True
 
         Button:
             id: button
