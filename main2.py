@@ -60,29 +60,28 @@ class Test(MDApp):
         return my_app
     
     def startstop(self): # run on main thread
+        print(self.root.ids.button.text)
         self.send_frame = not self.send_frame
-        
         if self.send_frame:
-            self.main_screen.ids.button.text = "Stop Video"
+            self.root.ids.button.text = "Stop Video"
             streamProcess = open_ffmpeg_stream_process()
             self.streamPipe = streamProcess
             self.streamEvent = Clock.schedule_interval(self.updateCurrFrame, 1/30)
         else:
-            self.main_screen.ids.button.text = "Start Video" 
+            self.root.ids.button.text = "Start Video" 
             self.streamEvent.cancel()
     
     def updateCurrFrame(self, dt):
         self.prev_frame = self.current_frame
-        self.current_frame = PILImage.frombytes('RGBA', self.main_screen.ids.camera.texture.size, self.main_screen.ids.camera.texture.pixels)
+        self.current_frame = PILImage.frombytes('RGBA', self.root.ids.camera.texture.size, self.root.ids.camera.texture.pixels)
         self.streamPipe.stdin.write(self.current_frame.tobytes())
 
 
 def watch_video():
-        pass
+    pass
 
 def record_video():
     pass
-
 
 # srt://3.89.162.77:9997
 def open_ffmpeg_stream_process(): # paramertize this to allow for different urls
@@ -90,8 +89,6 @@ def open_ffmpeg_stream_process(): # paramertize this to allow for different urls
         "ffmpeg -re -f rawvideo -pix_fmt rgba -s:v 1280x720 -framerate 30 -i pipe:0 -c:v libx264 -preset ultrafast -pix_fmt yuv420p -f mpegts udp://127.0.0.1:1234?pkt_size=1316"
     ).split()
     return subprocess.Popen(args, stdin=subprocess.PIPE)
-
-
 
 
 Test().run()
