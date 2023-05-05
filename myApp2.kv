@@ -29,24 +29,29 @@ MDBoxLayout:
                 text: " search button"
                 halign: "center" 
         Screen:
+            name: "Record"
             FloatLayout:
                 Label:
+                # this label isn't displaying at all, which is strange
                     text: "Webcam from OpenCV?"
-                    pos_hint: {"x":0.0, "y":0.8}
+                    pos_hint: {"x":0.0, "y":0.5}
                     size_hint: 1.0, 0.2
 
-                Camera:
-                    id: camera
-                    resolution: (1920, 1080)
-                    play: True
+                # Camera:
+                #     id: camera
+                #     resolution: (1920, 1080)
+                #     play: True
 
-                Button:
+                MDRaisedButton:
                     id: button
                     text: 'Start Video'
-                    pos_hint: {"x":0.0, "y":0.0}
-                    size_hint: 1.0, 0.2
-                    font_size: 50
+                    pos_hint: {"x":0.1, "y":0.05}
+                    size_hint: 0.8, 0.15
+                    font_size: self.width/20
+                    background_normal: ""
+                    background_color: "#12a8ff"
                     on_release: app.startstop()
+                    
 
         Screen:
             name: "Account"                   

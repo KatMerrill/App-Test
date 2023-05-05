@@ -14,7 +14,7 @@ from PIL import Image as PILImage
 
 class Test(MDApp):
     def callback(self, button_name, screen_manager, optional_url = ""):
-        print(button_name)
+        # print(button_name)
         # screen_manager.transition.direction = 'right'
         screen_manager.current = button_name
         if(button_name == "Record"):
