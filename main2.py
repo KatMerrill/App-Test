@@ -6,11 +6,17 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 
+from functools import partial
+
 # for video streaming
 import subprocess
 from kivy.clock import Clock
 from PIL import Image as PILImage
 
+# what is this supposed to be returning?????? i'm clearly doing something wrong
+def sample_(self, myname, mynumber):
+        print(mynumber, "wth")
+        # return self
 
 class Test(MDApp):
     def callback(self, button_name, screen_manager, optional_url = ""):
@@ -22,7 +28,6 @@ class Test(MDApp):
         if(button_name == "Watch"):
              watch_video(optional_url)
         
-
     def build(self):
         my_app = Builder.load_file("myApp2.kv")
 
@@ -43,10 +48,23 @@ class Test(MDApp):
                     pos_hint = {'x' : 0.1, 'y' : 0.1 + ((3 * num) // stream_count)/10 * 2.5},
                     background_normal = '',
                     background_color = (0, 0.533, 0.412, 1),
-                    # on_release = {
-                    #     self.callback("Videoplayer", my_app.ids.screen_manager, stream_buttons[num])
+                    # on_release = {                    # on_release = {
+                        # print(my_app.ids)
+                        # self.callback("Videoplayer", my_app.ids.screen_manager, stream_buttons[num])
+                    #     watch_video()
+                    # }
+
+                        # print(my_app.ids)
+                        # self.callback("Videoplayer", my_app.ids.screen_manager, stream_buttons[num])
+                    #     watch_video()
                     # }
                 ))
+            # stream_buttons[num].bind(on_release=watch_video)
+            print(num, "so")
+            # stream_buttons[num].bind(on_press=self.sample_('hi', num))
+            # button.bind(on_press=partial(my_callback, arg1='argument 1', arg2='argument 2'))
+            stream_buttons[num].bind(on_press=partial(sample_, myname='hi', mynumber=num))
+
             scrolling_layout.add_widget(stream_buttons[num])
         scrollview.add_widget(scrolling_layout)
         my_app.ids.home.add_widget(scrollview)
