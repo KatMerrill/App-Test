@@ -18,10 +18,15 @@ class Test(MDApp):
     # callback function is called when any button is pressed (both static and dynamic). redirects to correct page
     def callback(self, instance, my_manager, button_name = "Watch", vid_url = ""):
         my_manager.current = button_name
+
+        # for temporary video only
+        stream_player = self.root.ids.stream_player
+        stream_player.state = 'stop'
+
         if(button_name == "Record"):
             record_video()
         if(button_name == "Watch"):
-             watch_video(vid_url)
+            self.watch_video(my_manager, vid_url)
         
     # loads the kivy file
     def build(self):
@@ -79,8 +84,12 @@ class Test(MDApp):
         self.streamPipe.stdin.write(self.current_frame.tobytes())
 
 
-def watch_video(vid_url):
-    pass
+    def watch_video(self, instance, vid_url):
+        stream_player = self.root.ids.stream_player
+        stream_player.source = 'a_video_test/sample.mp4'
+        stream_player.state = 'play'
+        stream_player.options = {'eos': 'loop', 'allow_stretch' : 'True'}
+
 
 def record_video():
     pass
