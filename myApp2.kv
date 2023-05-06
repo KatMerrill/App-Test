@@ -7,13 +7,13 @@ MDBoxLayout:
         screen_manager: screen_manager
         left_action_items:
             [
-            ["home", lambda x: app.callback("Home", screen_manager), "Home"]
+            ["home", lambda x: app.callback(self, screen_manager, "Home"), "Home"]
             ]
         right_action_items:
             [
-            ["magnify", lambda x: app.callback("Search", screen_manager), "Search"],
-            ["camera", lambda x: app.callback("Record", screen_manager), "Record"],
-            ["account", lambda x: app.callback("Account", screen_manager), "Account"]
+            # ["magnify", lambda x: app.callback("Search", screen_manager), "Search"],
+            ["camera", lambda x: app.callback(self, screen_manager, "Record"), "Record"],
+            ["account", lambda x: app.callback(self, screen_manager, "Account"), "Account"]
             ]
     
     ScreenManager:
@@ -65,7 +65,7 @@ MDBoxLayout:
 
 
         Screen:
-            name: "Videoplayer"
+            name: "Watch"
             MDLabel:
                 text: "video"
                 halign: "center"

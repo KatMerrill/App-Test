@@ -13,21 +13,17 @@ import subprocess
 from kivy.clock import Clock
 from PIL import Image as PILImage
 
-# what is this supposed to be returning?????? i'm clearly doing something wrong
-def sample_(self, myname, mynumber):
-        print(mynumber, "wth")
-        # return self
 
 class Test(MDApp):
-    def callback(self, button_name, screen_manager, optional_url = ""):
-        # print(button_name)
-        # screen_manager.transition.direction = 'right'
-        screen_manager.current = button_name
+    # callback function is called when any button is pressed (both static and dynamic). redirects to correct page
+    def callback(self, instance, my_manager, button_name = "Watch", vid_url = ""):
+        my_manager.current = button_name
         if(button_name == "Record"):
             record_video()
         if(button_name == "Watch"):
-             watch_video(optional_url)
+             watch_video(vid_url)
         
+    # loads the kivy file
     def build(self):
         my_app = Builder.load_file("myApp2.kv")
 
@@ -48,22 +44,10 @@ class Test(MDApp):
                     pos_hint = {'x' : 0.1, 'y' : 0.1 + ((3 * num) // stream_count)/10 * 2.5},
                     background_normal = '',
                     background_color = (0, 0.533, 0.412, 1),
-                    # on_release = {                    # on_release = {
-                        # print(my_app.ids)
-                        # self.callback("Videoplayer", my_app.ids.screen_manager, stream_buttons[num])
-                    #     watch_video()
-                    # }
-
-                        # print(my_app.ids)
-                        # self.callback("Videoplayer", my_app.ids.screen_manager, stream_buttons[num])
-                    #     watch_video()
-                    # }
                 ))
-            # stream_buttons[num].bind(on_release=watch_video)
-            print(num, "so")
-            # stream_buttons[num].bind(on_press=self.sample_('hi', num))
-            # button.bind(on_press=partial(my_callback, arg1='argument 1', arg2='argument 2'))
-            stream_buttons[num].bind(on_press=partial(sample_, myname='hi', mynumber=num))
+            
+            # when a dynamic (stream) button is pressed, it calls the callback function
+            stream_buttons[num].bind(on_press=partial(self.callback, my_manager=my_app.ids.screen_manager, vid_url=stream_urls[num]))
 
             scrolling_layout.add_widget(stream_buttons[num])
         scrollview.add_widget(scrolling_layout)
@@ -95,7 +79,7 @@ class Test(MDApp):
         self.streamPipe.stdin.write(self.current_frame.tobytes())
 
 
-def watch_video():
+def watch_video(vid_url):
     pass
 
 def record_video():
