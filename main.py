@@ -5,6 +5,7 @@ from kivymd.app import MDApp
 from kivy.uix.scrollview import ScrollView
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
+from kivy.uix.image import Image
 
 from functools import partial
 
@@ -34,26 +35,33 @@ class Test(MDApp):
 
         # before compiling into an apk, switch to this!!
         # Window.maximize()
-        Window.size = (450, 800)
         Window.size = (400, 710)
 
+        # home page is added dynamically so the streams can be correctly included; other pages are static
         scrollview = ScrollView(
-            size_hint = (1, 0.9),
+            size_hint = (1, 1.15),
             pos_hint = {'x' : 0, 'y' : 0},
         )
         scrolling_layout = FloatLayout(
             size_hint = (1, 1.5)
         )
 
+        scrolling_layout.add_widget(Image(
+            source = "instructions.png",
+            size_hint = (0.9, 0.3),
+            pos_hint = {'x' : 0.05, 'y' : 0.7}
+        ))
+
         stream_urls = ["a", "b", "c", "d"]
         stream_buttons = []
         for num in range((stream_count := len(stream_urls))):
             stream_buttons.append(
-                Button(
+                Thumbnail(
                     size_hint = (0.8, 0.2),
                     pos_hint = {'x' : 0.1, 'y' : 0.1 + ((3 * num) // stream_count)/10 * 2.5},
-                    background_normal = '',
-                    background_color = (0, 0.533, 0.412, 1),
+                    # background_normal = '',
+                    # background_color = (0, 0.533, 0.412, 1),
+                    # background_color = (66/255, 135/255, 245/255)
                 ))
             
             # when a dynamic (stream) button is pressed, it calls the callback function
@@ -94,6 +102,12 @@ class Test(MDApp):
         stream_player.source = 'a_video_test/sample.mp4'
         stream_player.state = 'play'
         stream_player.options = {'eos': 'loop', 'allow_stretch' : 'True'}
+
+# each thumbnail represents a video stream, including any available information about the stream.
+class Thumbnail(Button):
+    # details are defined in the kv file
+    pass
+
 
 
 def record_video():

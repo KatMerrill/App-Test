@@ -11,7 +11,6 @@ MDBoxLayout:
             ]
         right_action_items:
             [
-            # ["magnify", lambda x: app.callback("Search", screen_manager), "Search"],
             ["camera", lambda x: app.callback(self, screen_manager, "Record"), "Record"],
             ["account", lambda x: app.callback(self, screen_manager, "Account"), "Account"]
             ]
@@ -37,10 +36,10 @@ MDBoxLayout:
                     pos_hint: {"x":0.0, "y":0.5}
                     size_hint: 1.0, 0.2
 
-                Camera:
-                    id: camera
-                    resolution: (1920, 1080)
-                    play: True
+                # Camera:
+                #     id: camera
+                #     resolution: (1920, 1080)
+                #     play: True
 
                 MDRaisedButton:
                     id: button
@@ -72,3 +71,8 @@ MDBoxLayout:
 
             Video:
                 id: stream_player
+
+
+<Thumbnail>:
+    background_normal: "default.png"
+    
