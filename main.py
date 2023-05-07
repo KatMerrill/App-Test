@@ -39,7 +39,7 @@ class Test(MDApp):
 
         # home page is added dynamically so the streams can be correctly included; other pages are static
         scrollview = ScrollView(
-            size_hint = (1, 1.15),
+            size_hint = (1, 1),
             pos_hint = {'x' : 0, 'y' : 0},
         )
         scrolling_layout = FloatLayout(
@@ -53,9 +53,9 @@ class Test(MDApp):
         ))
 
         stream_urls = ["a", "b", "c", "d"]
-        stream_buttons = []
+        stream_choices = []
         for num in range((stream_count := len(stream_urls))):
-            stream_buttons.append(
+            stream_choices.append(
                 Thumbnail(
                     size_hint = (0.8, 0.2),
                     pos_hint = {'x' : 0.1, 'y' : 0.1 + ((3 * num) // stream_count)/10 * 2.5},
@@ -65,9 +65,9 @@ class Test(MDApp):
                 ))
             
             # when a dynamic (stream) button is pressed, it calls the callback function
-            stream_buttons[num].bind(on_press=partial(self.callback, my_manager=my_app.ids.screen_manager, vid_url=stream_urls[num]))
+            stream_choices[num].bind(on_press=partial(self.callback, my_manager=my_app.ids.screen_manager, vid_url=stream_urls[num]))
 
-            scrolling_layout.add_widget(stream_buttons[num])
+            scrolling_layout.add_widget(stream_choices[num])
         scrollview.add_widget(scrolling_layout)
         my_app.ids.home.add_widget(scrollview)
 
