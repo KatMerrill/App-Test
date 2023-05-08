@@ -64,10 +64,6 @@ class Test(MDApp):
                     size_hint = (0.8, 0.9/stream_count),
                     # no matter how big the scrolling view becomes, 0 is always the bottom and 1 is always the top
                     pos_hint = {'x' : 0.1, 'y' : 0.7 - num/stream_count},
-                    
-                    # background_normal = '',
-                    # background_color = (0, 0.533, 0.412, 1),
-                    # background_color = (66/255, 135/255, 245/255)
                 ))
 
             # temporarily hardcoded
