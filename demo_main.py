@@ -6,6 +6,7 @@ from kivy.uix.scrollview import ScrollView
 from kivy.uix.floatlayout import FloatLayout
 from kivy.uix.button import Button
 from kivy.uix.image import Image
+from kivymd.uix.label.label import MDLabel
 
 from functools import partial
 
@@ -40,7 +41,7 @@ class Test(MDApp):
         # data on the available streams should be pulled at this point
         stream_urls = ["example1.mp4", "example2.mp4", "example3.mp4", "example3.mp4","example3.mp4"]
         stream_info = [("Research presentations from the Automation and Robotics Lab", "Thomas Jefferson High School for Science and Technology"),
-                       ("Llamigos (1080p)", "KanREN")]
+                       ("Llamigos (1080p)", "KanREN"), ("Untitled video", "No desription available"), ("Untitled video", "No desription available"), ("Untitled video", "No desription available")]
 
         # home page is added dynamically so the streams can be correctly included; other pages are static
         scrollview = ScrollView(
@@ -74,6 +75,7 @@ class Test(MDApp):
             stream_choices[num].bind(on_press=partial(self.callback, my_manager=my_app.ids.screen_manager, vid_url=stream_urls[num]))
 
             scrolling_layout.add_widget(stream_choices[num])
+
         scrollview.add_widget(scrolling_layout)
         my_app.ids.home.add_widget(scrollview)
 
