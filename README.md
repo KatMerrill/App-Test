@@ -1,8 +1,25 @@
-# Hello and welcome to Multicast Mobile!
+# Multicast Mobile!
 This app explores non-native multicast streaming for live video content.
 
-To run this code:
-1. You must download the following libraries (using pip install): kivy, kivymd, pillow, ffpyplayer
-2. Then, use your terminal to run "python demo_main.py". Please note that if you are not on a Linux device, the video streaming section will not work, so the camera icon will crash the app. However, the rest of the app still functions correctly.
+Disclaimer: this repository is slightly out of date; currently working to get all changes committed.
 
-If you ARE on a Linux device, open the file "demo.kv". Uncomment lines 39-42, which will allow the camera to work.
+# Planned Features + Fixes
+- [X] Stream camera to unicast2multicast translator via FFmpeg
+- [X] Camera preview
+- [X] UI Design
+- [X] Add AMT Gateway implementation
+- [ ] Integrate AMT Gateway
+- [ ] Integrate with Multicast Menu stream scraping
+- [ ] Full screen for camera and stream viewing
+- [ ] Fix stream encoding
+- [ ] Native Multicast?
+
+# Development
+For the development environment to work, you will need FFmpeg installed and working on your device.
+
+1. You must download the following libraries (using pip install): kivy, kivymd, pillow, ffpyplayer
+2. Run main.py to open the dev environment
+3. To build for Android or iOS, consult the documentation for Buildozer
+
+# Contribution
+Pull requests and feature suggestions welcome!
