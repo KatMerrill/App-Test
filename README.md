@@ -1,4 +1,4 @@
-# Multicast Mobile!
+### Multicast Mobile
 This app explores non-native multicast streaming for live video content.
 
 Disclaimer: this repository is slightly out of date; currently working to get all changes committed.
